@@ -13,8 +13,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.content.res.Resources;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -133,7 +131,7 @@ public class BackgroundService extends Service {
       return;
     }
 
-    int resourceId = resources.getIdentifier("ic_launcher", "mipmap", packageName);
+    int resourceId = resources.getIdentifier("small_icon", "mipmap", packageName);
 
     Intent intent = new Intent(this, intentClass);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -142,12 +140,9 @@ public class BackgroundService extends Service {
     PendingIntent pendingIntent = PendingIntent.getActivity(this, uniqueInt, intent,
       PendingIntent.FLAG_UPDATE_CURRENT);
 
-    Bitmap largeIcon = BitmapFactory.decodeResource(resources, resourceId);
-
     Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
     Notification.Builder notificationBuilder = new Notification.Builder(this)
-      .setLargeIcon(largeIcon)
       .setSmallIcon(resourceId)
       .setContentTitle(getApplicationName())
       .setContentText(bundle.getString("notificationMessage"))
