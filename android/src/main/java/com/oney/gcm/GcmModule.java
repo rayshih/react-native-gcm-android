@@ -46,16 +46,21 @@ public class GcmModule extends ReactContextBaseJavaModule implements LifecycleEv
     private Intent mIntent;
     private boolean mIsInForeground;
 
-    public GcmModule(ReactApplicationContext reactContext, Intent intent) {
+    public GcmModule(ReactApplicationContext reactContext) {
         super(reactContext);
-        mIntent = intent;
-
-        Log.d(TAG, "mIntent is null: " + (mIntent == null));
 
         if (getReactApplicationContext().hasCurrentActivity()) {
+            Activity activity = getCurrentActivity();
+            Intent intent = activity.getIntent();
+            if (intent != null && intent.getBundleExtra("bundle") != null) {
+                mIntent = intent;
+            }
+
+            Log.d(TAG, "mIntent is null: " + (mIntent == null));
+
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(reactContext);
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("GcmMainActivity", getCurrentActivity().getClass().getSimpleName());
+            editor.putString("GcmMainActivity", activity.getClass().getSimpleName());
             editor.apply();
         }
 
