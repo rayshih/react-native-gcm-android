@@ -30,7 +30,6 @@ import io.neson.react.notification.NotificationPackage;
 
 public class BackgroundService extends Service {
     private static final String TAG = "BackgroundService";
-    private ReactInstanceManager mReactInstanceManager;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -42,15 +41,6 @@ public class BackgroundService extends Service {
         Log.d(TAG, "onStartCommand");
         sendNotification(intent.getBundleExtra("bundle"));
         return START_NOT_STICKY;
-    }
-
-    @Override
-    public void onDestroy() {
-        Log.d(TAG, "onDestroy");
-        super.onDestroy();
-        mReactInstanceManager.onPause();
-        mReactInstanceManager.onDestroy();
-        mReactInstanceManager = null;
     }
 
     private Class getBuildConfigClass() {

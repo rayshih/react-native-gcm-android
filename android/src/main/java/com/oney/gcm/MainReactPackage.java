@@ -25,7 +25,6 @@ import com.facebook.react.views.scroll.ReactScrollViewManager;
 import com.facebook.react.views.swiperefresh.SwipeRefreshLayoutManager;
 import com.facebook.react.views.switchview.ReactSwitchManager;
 import com.facebook.react.views.text.ReactRawTextManager;
-import com.facebook.react.views.text.ReactTextInlineImageViewManager;
 import com.facebook.react.views.text.ReactTextViewManager;
 import com.facebook.react.views.text.ReactVirtualTextViewManager;
 import com.facebook.react.views.textinput.ReactTextInputManager;
@@ -74,7 +73,6 @@ public class MainReactPackage implements ReactPackage {
                 new ReactToolbarManager(),
                 new ReactViewManager(),
                 new ReactViewPagerManager(),
-                new ReactTextInlineImageViewManager(),
                 new ReactVirtualTextViewManager(),
                 new SwipeRefreshLayoutManager(),
                 new ReactWebViewManager());
