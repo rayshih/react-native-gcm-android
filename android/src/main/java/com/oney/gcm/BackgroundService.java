@@ -2,7 +2,6 @@ package com.oney.gcm;
 
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.Notification.Builder;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -21,12 +20,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 
 import java.lang.System;
 import java.util.List;
-import com.facebook.react.LifecycleState;
-import com.facebook.react.ReactInstanceManager;
 
 import java.lang.reflect.Field;
-
-import io.neson.react.notification.NotificationPackage;
 
 public class BackgroundService extends Service {
     private static final String TAG = "BackgroundService";
